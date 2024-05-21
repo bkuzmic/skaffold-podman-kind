@@ -1,0 +1,12 @@
+apiVersion: skaffold/v4beta11
+kind: Config
+build:  
+  artifacts:
+  - image: localhost:5001/hello-world
+    custom:
+      buildCommand: ./build.sh
+  local:
+    push: true
+manifests:
+  rawYaml:
+  - k8s/*.yaml

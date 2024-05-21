@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-world-podman
+spec:
+  containers:
+  - name: hello-world
+    image: localhost:5001/hello-world
