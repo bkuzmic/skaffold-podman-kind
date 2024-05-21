@@ -1,6 +1,6 @@
 # Skaffold - using Podman and Kind
 
-This is an example of running running Skaffold with only rootless Podman and Kind (no Docker client or server is required), using local registry also deployed in Kind.
+This is an example of running Skaffold with only rootless Podman and Kind (no Docker client or server is required), using local registry also deployed in Kind.
 
 ## Test environment
 - Ubuntu 24.04
