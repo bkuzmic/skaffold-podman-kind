@@ -3,7 +3,7 @@
 This is an example of running Skaffold with only rootless Podman and Kind (no Docker client or server is required), using local registry also deployed in Kind.
 
 ## Test environment
-- Ubuntu 24.04
+- Ubuntu 24.04 or MacOS
 - Podman 4.9.3 (rootless)
 - [Kind v0.23.0](https://github.com/kubernetes-sigs/kind/releases/download/v0.23.0/kind-linux-amd64)
 - [Skaffold v2.12.0](https://github.com/GoogleContainerTools/skaffold/releases/download/v2.12.0/skaffold-linux-amd64)
@@ -26,6 +26,9 @@ insecure=true
 
 Create new Kind Cluster and expose local Registry on port 5001:
 > ./kind-with-registry.sh
+
+(For MacOS) run another script:
+> ./macos-kind-with-registry.sh
 
 
 ### Skaffold
