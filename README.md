@@ -3,8 +3,8 @@
 This is an example of running Skaffold with only rootless Podman and Kind (no Docker client or server is required), using local registry also deployed in Kind.
 
 ## Test environment
-- Ubuntu 24.04 or MacOS
-- Podman 4.9.3 (rootless)
+- Ubuntu 24.04 or MacOS Sonoma (14)
+- Podman >=v4.9.3 (rootless)
 - [Kind v0.23.0](https://github.com/kubernetes-sigs/kind/releases/download/v0.23.0/kind-linux-amd64)
 - [Skaffold v2.12.0](https://github.com/GoogleContainerTools/skaffold/releases/download/v2.12.0/skaffold-linux-amd64)
 
@@ -14,7 +14,7 @@ This is an example of running Skaffold with only rootless Podman and Kind (no Do
 
 Setup access to local Registry. Create or modify registries.conf:
 
-> vi ~/.config/containers/registries.conf
+> vi $HOME/.config/containers/registries.conf
 
 ```
 [[registry]]
@@ -33,7 +33,7 @@ Create new Kind Cluster and expose local Registry on port 5001:
 
 ### Skaffold
 
-Modify global configuration (or create new config file): $HOME/.skaffold/config and add option to disable Kind loading images using load method:
+Modify global configuration (or create new config file): `$HOME/.skaffold/config` and add option to disable Kind loading images using load method:
 ```
 global:  
   kind-disable-load: true
