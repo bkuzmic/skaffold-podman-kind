@@ -5,8 +5,8 @@ This is an example of running Skaffold with only rootless Podman and Kind (no Do
 ## Test environment
 - Ubuntu 24.04 or MacOS Sonoma (14)
 - Podman >=v4.9.3 (rootless)
-- [Kind v0.23.0](https://github.com/kubernetes-sigs/kind/releases/download/v0.23.0/kind-linux-amd64)
-- [Skaffold v2.12.0](https://github.com/GoogleContainerTools/skaffold/releases/download/v2.12.0/skaffold-linux-amd64)
+- [Kind v0.23.0](https://github.com/kubernetes-sigs/kind/releases/tag/v0.23.0)
+- [Skaffold v2.12.0](https://github.com/GoogleContainerTools/skaffold/releases/tag/v2.12.0)
 
 ## Setup
 
