@@ -40,12 +40,6 @@ Be sure to delete existing Kind Cluster and Kind Registry:
 Create new Kind Cluster and expose local Registry on port 5001:
 > ./kind-with-registry.sh
 
-**For MacOS** 
-
-Run another script:
-> ./macos-kind-with-registry.sh
-
-
 ### Skaffold (optional step)
 
 Modify global configuration (or create new config file): `$HOME/.skaffold/config` and add option to disable Kind loading images using load method:

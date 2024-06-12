@@ -10,6 +10,25 @@ if [ "$(podman inspect -f '{{.State.Running}}' "${reg_name}" 2>/dev/null || true
     registry:2
 fi
 
+# Detect OS to setup kind startup
+unameOut="$(uname -s)"
+case "${unameOut}" in
+  Linux*) machine=Linux;;
+  Darwin*) machine=Mac;;  
+  *) machine="UNKNOWN:${unameOut}"
+esac
+
+kind_startup=""
+if test "${machine}" = "Linux"; then
+  kind_startup="systemd-run --user --scope --property=Delegate=yes"
+elif test "${machine}" = "Mac"; then   
+  kind_startup="KIND_EXPERIMENTAL_PROVIDER=podman"
+else
+  echo 'This script only works in Linux or Mac'
+  exit 1
+fi
+
+
 # 2. Create kind cluster with containerd registry config dir enabled
 # TODO: kind will eventually enable this by default and this patch will
 # be unnecessary.
@@ -18,7 +37,7 @@ fi
 # https://github.com/kubernetes-sigs/kind/issues/2875
 # https://github.com/containerd/containerd/blob/main/docs/cri/config.md#registry-configuration
 # See: https://github.com/containerd/containerd/blob/main/docs/hosts.md
-cat <<EOF | systemd-run --user --scope --property=Delegate=yes kind create cluster --config=-
+cat <<EOF | ${kind_startup} kind create cluster --config=-
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 containerdConfigPatches:
